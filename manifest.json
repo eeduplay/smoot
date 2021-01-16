@@ -2,5 +2,11 @@
   "name": "Smoot",
   "version": "0.1",
   "description": "Unit Conversion Extension with Fun Facts!",
-  "manifest_version": 2
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": ["https://*/*","http://*/*"],
+      "js": ["contentScript.js"]
+    }
+  ]
 }
