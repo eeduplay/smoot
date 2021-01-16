@@ -16,16 +16,24 @@
 # [START gae_python3_render_template]
 import datetime
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request, json
 
 app = Flask(__name__)
 
 
 @app.route('/query')
-def query():
+def query_api():
     value = request.args.get('value')
-
-    return render_template('index.html', times='value')
+    unit = request.args.get('unit')
+    
+    # Insert SQL code here
+    
+    return {
+            "tname" = tname,
+            "tvalue" = tvalue,
+            "bname" = bname,
+            "bvalue" = bvalue
+            }
 
 
 if __name__ == '__main__':
