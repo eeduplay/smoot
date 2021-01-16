@@ -28,15 +28,15 @@ def query_api():
     
     # Insert SQL code here
     
-    con.run("SELECT TOP 2 * FROM [myTable] WHERE Unit = *{} ORDER BY ABS( "Converted Value" - {})".format(unit,value)) 
+    #con.run("SELECT TOP 2 * FROM [myTable] WHERE Unit = *{} ORDER BY ABS( "Converted Value" - {})".format(unit,value)) 
     
     
     #Placeholder code for testing
 
-    tname = 'ass'
-    tvalue = 1
-    bname = 'ass'
-    bvalue = 2
+    tname = value
+    tvalue = value
+    bname = value
+    bvalue = value
     
     return {
             "tname" : tname,
