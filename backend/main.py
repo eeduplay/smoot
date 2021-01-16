@@ -27,6 +27,15 @@ def query_api():
     
     # Insert SQL code here
     
+    #Placeholder code for testing
+    print(value)
+    print(unit)
+    
+    tname = 'ass'
+    tvalue = 1
+    bname = 'ass'
+    bvalue = 2
+    
     return {
             "tname" = tname,
             "tvalue" = tvalue,
