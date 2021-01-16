@@ -19,7 +19,7 @@ from flask import Flask, request, json
 import pg8000
 
 app = Flask(__name__)
-con = pg8000.connect("postgres",host="34.73.215.171",password="jeff")
+#con = pg8000.connect("postgres",host="34.73.215.171",password="jeff")
 
 @app.route('/query')
 def query_api():
