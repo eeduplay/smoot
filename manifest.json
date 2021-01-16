@@ -1,6 +1,6 @@
 {
-  "name": "Note Taker App Starter",
-  "version": "0.0.1",
-  "description": "Take Notes on web pages!",
+  "name": "Smoot",
+  "version": "0.1",
+  "description": "Unit Conversion Extension with Fun Facts!",
   "manifest_version": 2
 }
