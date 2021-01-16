@@ -37,10 +37,10 @@ def query_api():
     bvalue = 2
     
     return {
-            "tname" = tname,
-            "tvalue" = tvalue,
-            "bname" = bname,
-            "bvalue" = bvalue
+            "tname" : tname,
+            "tvalue" : tvalue,
+            "bname" : bname,
+            "bvalue" : bvalue
             }
 
 
