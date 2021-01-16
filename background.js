@@ -9,9 +9,10 @@ function onClickHandler(info, tab) {
     var re = /(\d*\.?\d+|\d{1,3}(,\d{3})*(\.\d+)?)\s?(exa|peta|tera|giga|mega|kilo|hecto|deca|deci|centi|mili|micro|nano|pico|femto|atto|zepto|yotta|[yzafpnumcdhkKMGTPEZY])?(miles|mi|(in(ch)|feet|ft|A|yard|yd|fathom|furlong|rod|league|chain|altuve|parsec|beard\s?-?second|smoot|light\s?-?year|m(eters)?))e?s?/i;
     var info = sText.match(re);
     console.log(info);
-    var myNum = info[0];
-    var prefix = info[3];
-    var unit = info[4];
+    var myNum = info[1];
+    var prefix = info[4];
+    var unit = info[5];
+    alert('The number is ' + myNum + '\nThe prefix is ' + prefix + '\nThe unit is ' +unit);
     return myNum, prefix, unit;
 }
 
