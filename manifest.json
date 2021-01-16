@@ -4,6 +4,7 @@
   "description": "Unit Conversion Extension with Fun Facts!",
   "manifest_version": 2,
   "page_action": {
+    "default_popup": "popup.html",
     "default_icon": {
       "16": "images/smoot16.png",
       "32": "images/smoot32.png",
