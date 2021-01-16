@@ -18,5 +18,11 @@
     "48": "images/smoot48.png",
     "64": "images/smoot64.png",
     "128": "images/smoot128.png"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*","http://*/*"],
+      "js": ["contentScript.js"]
+    }
+  ]
 }
