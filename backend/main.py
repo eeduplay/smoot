@@ -14,9 +14,8 @@
 
 # [START gae_python38_render_template]
 # [START gae_python3_render_template]
-import datetime
 
-from flask import Flask, render_template, request, json
+from flask import Flask, request, json
 
 app = Flask(__name__)
 
