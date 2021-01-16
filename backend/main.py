@@ -16,9 +16,10 @@
 # [START gae_python3_render_template]
 
 from flask import Flask, request, json
+import pg8000
 
 app = Flask(__name__)
-
+con = pg8000.connect("postgres",host="34.73.215.171",password="jeff")
 
 @app.route('/query')
 def query_api():
@@ -27,10 +28,11 @@ def query_api():
     
     # Insert SQL code here
     
-    #Placeholder code for testing
-    print(value)
-    print(unit)
+    con.run("SELECT TOP 2 * FROM [myTable] WHERE Unit = *{} ORDER BY ABS( "Converted Value" - {})".format(unit,value)) 
     
+    
+    #Placeholder code for testing
+
     tname = 'ass'
     tvalue = 1
     bname = 'ass'
