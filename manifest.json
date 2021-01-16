@@ -3,7 +3,7 @@
   "version": "0.1",
   "description": "Unit Conversion Extension with Fun Facts!",
   "manifest_version": 2,
-  "page_action": {
+  "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
       "16": "images/smoot16.png",
