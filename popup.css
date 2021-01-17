@@ -17,6 +17,28 @@ body{
     /* background-size: auto 26px; */
 }
 
+#field{
+    float: right;
+    margin-right: 38px;
+    margin-top: 14px;
+}
+
+#manInput{
+    height: 26px;
+    width: 100px;
+    border: none;
+    text-align: right;
+}
+
+#runbtn{
+    height: 26px;
+    width: 26px;
+    background-color: #42718E;
+    border-radius: 7px;
+    border: none;
+    vertical-align: bottom;
+}
+
 #rangebox{
     height: 88px;
     width: 358px;
