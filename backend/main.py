@@ -72,21 +72,31 @@ cors = CORS(app, resources={"r/*": {"origins": "*"}})
 def query():
     value = request.args.get('value')
     unit = request.args.get('unit')
+    prefix = request.args.get('prefix')
+    multiplier = request.args.get('multiplier')
     
     # Insert SQL code here
+    conn = psycopg2.connect(user="postgres",password="jeff",host='34.73.215.171',port='5432',database="dimension")
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM lengthAgain ORDER BY ABS(converted - (%s))",(value,))
+    out = cur.fetchmany(2)
+    i=0
+    j=1
     
-    cur.execute("SELECT TOP 2 * FROM [myTable] WHERE Unit = *{};ORDER BY ABS(`Converted Value` - {})".format(unit,value))
-    out = cur.fetchall()
+    if out[0][3]<float(value):
+        i=1
+        j=0
+        while out[i][3]<float(value):
+            i=i+1
+            cur.execute("SELECT * FROM lengthAgain ORDER BY ABS(converted - (%s))",(value,))
+            out = cur.fetchmany(i+1)
     
-    cur.close()
-    conn.close()
-
     #Placeholder code for testing
 
-    tname = out
-    tvalue = out
-    bname = out
-    bvalue = out
+    tname = out[i][4]
+    tvalue = out[i][3]
+    bname = out[j][4]
+    bvalue = out[j][3]
     
     return {
             "tname" : tname,
@@ -95,6 +105,8 @@ def query():
             "bvalue" : bvalue
             }
 
+cur.close()
+conn.close()
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
