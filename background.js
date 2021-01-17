@@ -7,13 +7,13 @@ chrome.runtime.onInstalled.addListener(function() {
 function onClickHandler(info, tab) {
     let sText = info.selectionText;
     var parsedExpression = stringParser(sText);
-    var value_bounds = queryRequest(parsedExpression[4],parsedExpression[5],parsedExpression[1]);
+    var value_bounds = queryRequest(parsedExpression[5],parsedExpression[6],parsedExpression[1]);
 
     chrome.runtime.sendMessage({
         msg: "values", 
         data: {
             query_value: parsedExpression[1],
-            query_units: parsedExpression[4] + parsedExpression[5],
+            query_units: parsedExpression[5] + parsedExpression[6],
             // top_value: value_bounds['tvalue'],
             // top_units: value_bounds['tname'],
             // bot_value: value_bounds['bvalue'],
@@ -23,9 +23,19 @@ function onClickHandler(info, tab) {
 }
 
 function stringParser(value_unit) {
-    let re = /(\d*\.?\d+|\d{1,3}(,\d{3})*(\.\d+)?)\s?(exa|peta|tera|giga|mega|kilo|hecto|deca|deci|centi|mili|micro|nano|pico|femto|atto|zepto|yotta|[yzafpnumcdhkKMGTPEZY])?(miles|mi|(in(ch)|feet|ft|A|yard|yd|fathom|furlong|rod|league|chain|altuve|parsec|beard\s?-?second|smoot|light\s?-?year|m(eters)?))e?s?/i;
+    let re = /(\d*\.?\d+|\d{1,3}(,\d{3})*(\.\d+)?)\s?(hundred|thousand|million|billion|trillion|quadrillion)?\s?(exa|peta|tera|giga|mega|kilo|hecto|deca|deci|centi|mili|micro|nano|pico|femto|atto|zepto|yotta|[yzafpnumcdhkKMGTPEZY])?(miles|mi|(in(ch)|feet|ft|A|yard|yd|fathom|furlong|rod|league|chain|altuve|parsec|beard\s?-?second|smoot|light\s?-?year|m(eters)?))e?s?/i;
     let parsed = value_unit.match(re);
 
+    var quantity_values = {
+        'undefined': 1,
+        'hundred': 100,
+        'thousand': 1000,
+        'million': 1000000,
+        'billion':1000000000,
+        'trillion':1000000000000,
+        'quadrillion':1000000000000,
+    }
+    parsed[1] = parsed[1] * quantity_values[parsed[4]];
     return parsed;
 }
 
