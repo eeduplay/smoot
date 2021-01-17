@@ -18,6 +18,49 @@
 from flask import Flask, request, json
 import pg8000
 
+import math
+
+conversion_dict = {
+    #these are the prefix conversions
+    'da': math.pow(10,1),
+    'h': math.pow(10,2),
+    'k': math.pow(10,3),
+    'M': math.pow(10,6),
+    'G': math.pow(10,9),
+    'T': math.pow(10,12),
+    'P': math.pow(10,15),
+    'E': math.pow(10,18),
+    'Z': math.pow(10,21),
+    'Y': math.pow(10,24),
+    'c': math.pow(10,-2),
+    'm': math.pow(10,-3),
+    'u': math.pow(10,-6),
+    'n': math.pow(10,-9),
+    'p': math.pow(10,-12),
+    'f': math.pow(10,-15),
+    'a': math.pow(10,-18),
+    'z': math.pow(10,-21),
+    'y': math.pow(10,-24),
+    #these are the unit conversions
+    'A': 100*math.pow(10,-12),
+    'in': 25.4*math.pow(10,-3),
+    'ft': .3048,
+    'yd': .9144,
+    'mile': 1609.344,
+    'league': 4800,
+    'fathom': 1.8288,
+    'chain': 20.1168,
+    'rod': 5.0292,
+    'furlong': 201.168,
+    'potrzebie': 2.2633485*math.pow(10,-3),
+    'altuve': 1.65,
+    'parsec': 3.086*math.pow(10,16),
+    'beard-second': math.pow(10,-9),
+    'smoot': 1.7018,
+}
+
+
+
 app = Flask(__name__)
 #con = pg8000.connect("postgres",host="34.73.215.171",password="jeff")
 
