@@ -14,10 +14,10 @@ function onClickHandler(info, tab) {
         data: {
             query_value: parsedExpression[1],
             query_units: parsedExpression[5] + parsedExpression[6],
-            // top_value: value_bounds['tvalue'],
-            // top_units: value_bounds['tname'],
-            // bot_value: value_bounds['bvalue'],
-            // bot_units: value_bounds['bname']
+            top_value: value_bounds['tvalue'],
+            top_units: value_bounds['tname'],
+            bot_value: value_bounds['bvalue'],
+            bot_units: value_bounds['bname']
         }
     });
 }
