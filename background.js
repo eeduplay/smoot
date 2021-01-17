@@ -23,7 +23,7 @@ function onClickHandler(info, tab) {
 }
 
 function stringParser(value_unit) {
-    let re = /(\d*\.?\d+|\d{1,3}(,\d{3})*(\.\d+)?)\s?(hundred|thousand|million|billion|trillion|quadrillion)?\s?(exa|peta|tera|giga|mega|kilo|hecto|deca|deci|centi|mili|micro|nano|pico|femto|atto|zepto|yotta|[yzafpnumcdhkKMGTPEZY])?(miles|mi|(in(ch)|feet|ft|A|yard|yd|fathom|furlong|rod|league|chain|altuve|parsec|beard\s?-?second|smoot|light\s?-?year|m(eters)?))e?s?/i;
+    let re = /(\d*\.?\d+|\d{1,3}(,\d{3})*(\.\d+)?)\s?(hundred|thousand|million|billion|trillion|quadrillion)?\s?(yotta|zotta|exa|peta|tera|giga|mega|kilo|hecto|deca|deci|centi|mili|micro|nano|pico|femto|atto|zepto|yocto|[yzafpnumcdhkKMGTPEZY])?(miles|mi|(in(ch)|feet|ft|A|yard|yd|fathom|furlong|rod|league|chain|altuve|parsec|beard\s?-?second|smoot|light\s?-?year|m(eters)?))e?s?/i;
     let parsed = value_unit.match(re);
 
     var quantity_values = {
@@ -37,32 +37,59 @@ function stringParser(value_unit) {
     }
     parsed[1] = parsed[1] * quantity_values[parsed[4]];
 
-    var conversion_dict = {
+    var prefix_dict = {
 
         'd': Math.pow(10,-1),
+        'deci': Math.pow(10,-1),
         'h': Math.pow(10,2),
+        'hecto': Math.pow(10,2),
         'k': Math.pow(10,3),
+        'kilo': Math.pow(10,3),
         'M': Math.pow(10,6),
+        'mega': Math.pow(10,6),
         'G': Math.pow(10,9),
+        'giga': Math.pow(10,9),
         'T': Math.pow(10,12),
+        'tera': Math.pow(10,12),
         'P': Math.pow(10,15),
+        'peta': Math.pow(10,15),
         'E': Math.pow(10,18),
+        'exa': Math.pow(10,18),
         'Z': Math.pow(10,21),
+        'zotta': Math.pow(10,21),
         'Y': Math.pow(10,24),
+        'yotta': Math.pow(10,24),
         'c': Math.pow(10,-2),
+        'centi': Math.pow(10,-2),
         'm': Math.pow(10,-3),
+        'milli': Math.pow(10,-3),
         'u': Math.pow(10,-6),
+        'micro': Math.pow(10,-6),
         'n': Math.pow(10,-9),
+        'nano': Math.pow(10,-9),
         'p': Math.pow(10,-12),
+        'pico': Math.pow(10,-12),
         'f': Math.pow(10,-15),
+        'femto': Math.pow(10,-15),
         'a': Math.pow(10,-18),
+        'atto': Math.pow(10,-18),
         'z': Math.pow(10,-21),
+        'zepto': Math.pow(10,-21),
         'y': Math.pow(10,-24),
-        'A': 100*Math.pow(10,-12),
+        'yocto': Math.pow(10,-24)
+    }
+    var unit_dict = {
+        'm': 1,
+        'meter':1,
         'in': 25.4*Math.pow(10,-3),
+        'inch': 25.4*Math.pow(10,-3),
         'ft': .3048,
+        'foot': .3048,
         'yd': .9144,
+        'yard': .9144,
         'mile': 1609.344,
+        'mi': 1609.344,
+        'A': 100*Math.pow(10,-12),
         'league': 4800,
         'fathom': 1.8288,
         'chain': 20.1168,
@@ -72,10 +99,10 @@ function stringParser(value_unit) {
         'altuve': 1.65,
         'parsec': 3.086*Math.pow(10,16),
         'beard-second': Math.pow(10,-9),
-        'smoot': 1.7018,
+        'smoot': 1.7018
     }
 
-    parsed[1] = parsed[1] * conversion_dict[parsed[5]];
+    parsed[1] = parsed[1] * unit_dict[parsed[6]] * prefix_dict[parsed[5]];
 
     return parsed;
 }
