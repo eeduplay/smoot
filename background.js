@@ -36,7 +36,7 @@ function stringParser(value_unit) {
         'quadrillion':1000000000000,
     }
     parsed[1] = parsed[1] * quantity_values[parsed[4]];
-
+//parsed 4 is quantity, parsed 5 is prefix, parsed 6 is unit
     var prefix_dict = {
 
         'd': Math.pow(10,-1),
@@ -84,7 +84,7 @@ function stringParser(value_unit) {
         'in': 25.4*Math.pow(10,-3),
         'inch': 25.4*Math.pow(10,-3),
         'ft': .3048,
-        'foot': .3048,
+        'feet': .3048,
         'yd': .9144,
         'yard': .9144,
         'mile': 1609.344,
@@ -103,7 +103,7 @@ function stringParser(value_unit) {
     }
 
     parsed[1] = parsed[1] * unit_dict[parsed[6]] * prefix_dict[parsed[5]];
-
+    //parsed 4 is quantity, parsed 5 is prefix, parsed 6 is unit
     return parsed;
 }
 
