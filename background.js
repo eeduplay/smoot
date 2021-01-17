@@ -79,6 +79,7 @@ function stringParser(value_unit) {
         'undefined':1,
         'm': 1,
         'meter':1,
+        'meters':1,
         'in': 25.4*Math.pow(10,-3),
         'inch': 25.4*Math.pow(10,-3),
         'ft': .3048,
