@@ -34,9 +34,10 @@ function stringParser(value_unit) {
         'billion':1000000000,
         'trillion':1000000000000,
         'quadrillion':1000000000000,
-    }
+    };
     parsed[1] = parsed[1] * quantity_values[parsed[4]];
 //parsed 4 is quantity, parsed 5 is prefix, parsed 6 is unit
+
     var prefix_dict = {
 
         'd': Math.pow(10,-1),
@@ -77,7 +78,8 @@ function stringParser(value_unit) {
         'zepto': Math.pow(10,-21),
         'y': Math.pow(10,-24),
         'yocto': Math.pow(10,-24)
-    }
+    };
+    
     var unit_dict = {
         'm': 1,
         'meter':1,
@@ -100,7 +102,7 @@ function stringParser(value_unit) {
         'parsec': 3.086*Math.pow(10,16),
         'beard-second': Math.pow(10,-9),
         'smoot': 1.7018
-    }
+    };
 
     parsed[1] = parsed[1] * unit_dict[parsed[6]] * prefix_dict[parsed[5]];
     //parsed 4 is quantity, parsed 5 is prefix, parsed 6 is unit
