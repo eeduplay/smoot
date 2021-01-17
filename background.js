@@ -14,6 +14,9 @@ function stringParser(value_unit) {
     let re = /(\d*\.?\d+|\d{1,3}(,\d{3})*(\.\d+)?)\s?(hundred|thousand|million|billion|trillion|quadrillion)?\s?(yotta|zotta|exa|peta|tera|giga|mega|kilo|hecto|deca|deci|centi|mili|micro|nano|pico|femto|atto|zepto|yocto|[yzafpnumcdhkKMGTPEZY])?(miles|mi|(in(ch)|feet|ft|A|yard|yd|fathom|furlong|rod|league|chain|altuve|parsec|beard\s?-?second|smoot|light\s?-?year|m(eters)?))e?s?/i;
     let parsed = value_unit.match(re);
 
+    if (typeof parsed[4] === 'undefined') {
+        parsed[4] = 'undefined';
+    }
     var quantity_values = {
         'undefined': 1,
         'hundred': 100,
@@ -25,9 +28,13 @@ function stringParser(value_unit) {
     };
     parsed[1] = parsed[1] * quantity_values[parsed[4]];
 //parsed 4 is quantity, parsed 5 is prefix, parsed 6 is unit
+    
+    if (typeof parsed[5] === 'undefined') {
+        parsed[5] = 'undefined';
+    }
 
     var prefix_dict = {
-
+        'undefined':1,
         'd': Math.pow(10,-1),
         'deci': Math.pow(10,-1),
         'h': Math.pow(10,2),
@@ -69,6 +76,7 @@ function stringParser(value_unit) {
     };
     
     var unit_dict = {
+        'undefined':1,
         'm': 1,
         'meter':1,
         'in': 25.4*Math.pow(10,-3),
