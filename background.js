@@ -87,6 +87,7 @@ function stringParser(value_unit) {
         'yd': .9144,
         'yard': .9144,
         'mile': 1609.344,
+        'miles': 1609.344,
         'mi': 1609.344,
         'A': 100*Math.pow(10,-12),
         'league': 4800,
