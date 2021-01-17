@@ -1,7 +1,7 @@
 {
   "name": "Smoot",
   "version": "0.1",
-  "description": "Unit Conversion Extension with Fun Facts!",
+  "description": "Length Visualization Tool designed to make numbers more relatable!",
   "manifest_version": 2,
   "browser_action": {
     "default_popup": "popup.html",
