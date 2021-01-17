@@ -39,7 +39,7 @@ function stringParser(value_unit) {
 
     var conversion_dict = {
 
-        'da': Math.pow(10,1),
+        'd': Math.pow(10,-1),
         'h': Math.pow(10,2),
         'k': Math.pow(10,3),
         'M': Math.pow(10,6),
