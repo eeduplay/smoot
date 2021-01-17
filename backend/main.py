@@ -16,7 +16,12 @@
 # [START gae_python3_render_template]
 
 from flask import Flask, request, json
-import pg8000
+#import psycopg2
+#import os
+
+#os.system('./cloud_sql_proxy -instances=smootthenorth:us-east1:dimension=tcp:5432 &')
+#conn = psycopg2.connect(user="postgres",password="jeff",host='localhost',port='5432',database="dimension")
+#cur = conn.cursor()
 
 import math
 
@@ -59,27 +64,30 @@ conversion_dict = {
     'smoot': 1.7018,
 }
 
-
-
+from flask_cors import CORS, cross_origin
 app = Flask(__name__)
-#con = pg8000.connect("postgres",host="34.73.215.171",password="jeff")
+cors = CORS(app, resources={"/*": {"origins": "*"}})
 
 @app.route('/query')
-def query_api():
+def query():
     value = request.args.get('value')
     unit = request.args.get('unit')
     
     # Insert SQL code here
     
-    #con.run("SELECT TOP 2 * FROM [myTable] WHERE Unit = *{} ORDER BY ABS( "Converted Value" - {})".format(unit,value)) 
+    #cur.execute("SELECT TOP 2 * FROM [myTable] WHERE Unit = *{};ORDER BY ABS(`Converted Value` - {})".format(unit,value))
+    #out = cur.fetchall()
     
-    
-    #Placeholder code for testing
+    #cur.close()
+    #conn.close()
 
-    tname = value
-    tvalue = value
-    bname = value
-    bvalue = value
+    #Placeholder code for testing
+    out = value
+
+    tname = out
+    tvalue = out
+    bname = out
+    bvalue = out
     
     return {
             "tname" : tname,
