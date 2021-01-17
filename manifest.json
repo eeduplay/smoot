@@ -20,7 +20,7 @@
     "64": "images/smoot64.png",
     "128": "images/smoot128.png"
   },
-  "permissions": ["contextMenus"],
+  "permissions": ["contextMenus","https://smootthenorth.ue.r.appspot.com/*","http://smootthenorth.ue.r.appspot.com/*"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
