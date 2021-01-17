@@ -7,19 +7,7 @@ chrome.runtime.onInstalled.addListener(function() {
 function onClickHandler(info, tab) {
     let sText = info.selectionText;
     var parsedExpression = stringParser(sText);
-    var value_bounds = queryRequest(parsedExpression[5],parsedExpression[6],parsedExpression[1]);
-
-    chrome.runtime.sendMessage({
-        msg: "values", 
-        data: {
-            query_value: parsedExpression[1],
-            query_units: parsedExpression[5] + parsedExpression[6],
-            top_value: value_bounds['tvalue'],
-            top_units: value_bounds['tname'],
-            bot_value: value_bounds['bvalue'],
-            bot_units: value_bounds['bname']
-        }
-    });
+    queryRequest(parsedExpression[5],parsedExpression[6],parsedExpression[1]);
 }
 
 function stringParser(value_unit) {
@@ -108,18 +96,26 @@ function stringParser(value_unit) {
 }
 
 function queryRequest(prefix,unit,value) {
-    var bounds;
     // let requestURL = 'http://74.56.190.15:8080/query?unit='+ prefix + unit + '&value=' + value;
-    let requestURL = 'http://74.56.190.15:8080/query?value=1000';
+    let requestURL = 'http://74.56.190.15:8080/query?value=' + value + '&unit=m';
     let request = new XMLHttpRequest();
     request.open('GET',requestURL);
     request.responseType = 'json';
     request.send();
     request.onload = function() {
-        bounds = request.response;
-        console.log(request.response)
+        const bounds = request.response;
+
+        chrome.runtime.sendMessage({
+            msg: "values", 
+            data: {
+                query_value: value,
+                top_value: bounds['tvalue'],
+                top_units: bounds['tname'],
+                bot_value: bounds['bvalue'],
+                bot_units: bounds['bname']
+            }
+        });
     }
-    return bounds;
 }
 
 chrome.contextMenus.onClicked.addListener(onClickHandler);
