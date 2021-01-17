@@ -25,16 +25,21 @@ body{
 
 #manInput{
     height: 26px;
-    width: 100px;
+    width: 150px;
     border: none;
     text-align: right;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#manInput:focus, #runbtn:focus{
+    outline: none;
 }
 
 #runbtn{
     height: 26px;
     width: 26px;
     background-color: #42718E;
-    border-radius: 7px;
+    border-radius: 4px;
     border: none;
     vertical-align: bottom;
 }
