@@ -82,13 +82,15 @@ function stringParser(value_unit) {
 
 function queryRequest(prefix,unit,value) {
     var bounds;
-    let requestURL = 'http://74.56.190.15:8080/query?unit='+ prefix + unit + '&value=' + value;
+    // let requestURL = 'http://74.56.190.15:8080/query?unit='+ prefix + unit + '&value=' + value;
+    let requestURL = 'http://74.56.190.15:8080/query?value=1000';
     let request = new XMLHttpRequest();
     request.open('GET',requestURL);
     request.responseType = 'json';
     request.send();
     request.onload = function() {
         bounds = request.response;
+        console.log(request.response)
     }
     return bounds;
 }
